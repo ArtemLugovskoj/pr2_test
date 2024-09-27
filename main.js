@@ -1,4 +1,4 @@
-// 1 task
+// Task 1
 function countLetter(letter, row) {
     let count = 0;
     for (let i = 0; i < row.length; i++) {
@@ -9,38 +9,41 @@ function countLetter(letter, row) {
     return count;
 }
 
-function getRow(firstRow, secondRow) {
+function getRow() {
+    const firstRow = 'Slow and steady wins the race';
+    const secondRow = 'You can say that again';
     const letter = prompt("Введіть літеру для підрахунку:");
     const countFirstRow = countLetter(letter, firstRow);
     const countSecondRow = countLetter(letter, secondRow);
 
+    let result;
     if (countFirstRow > countSecondRow) {
-        return firstRow;
+        result = firstRow;
     } else {
-        return secondRow;
+        result = secondRow;
     }
+    alert(result);
 }
 
-const firstRow = 'Slow and steady wins the race';
-const secondRow = 'You can say that again';
-
-alert(getRow(firstRow, secondRow)); 
-
-// 2 task
-function formattedPhone(phone) {
+// Task 2
+function formattedPhone() {
+    let phone = prompt("Введіть номер телефону:");
     let cleanedPhone = phone.replace(/\D/g, '');
 
     if (cleanedPhone.length === 10 && cleanedPhone.startsWith('0')) {
         cleanedPhone = '38' + cleanedPhone;
     } else if (cleanedPhone.length === 12 && cleanedPhone.startsWith('38')) {
+        // Вже правильно відформатовано
     } else if (cleanedPhone.length === 11 && cleanedPhone.startsWith('8')) {
         cleanedPhone = '38' + cleanedPhone.slice(1);
     } else {
-        return "Невірний формат номера";
+        alert("Невірний формат номера");
+        return;
     }
 
-    return `+${cleanedPhone.slice(0, 2)} (${cleanedPhone.slice(2, 5)}) ${cleanedPhone.slice(5, 8)}-${cleanedPhone.slice(8, 10)}-${cleanedPhone.slice(10, 12)}`;
+    const formatted = `+${cleanedPhone.slice(0, 2)} (${cleanedPhone.slice(2, 5)}) ${cleanedPhone.slice(5, 8)}-${cleanedPhone.slice(8, 10)}-${cleanedPhone.slice(10, 12)}`;
+    alert(formatted);
 }
 
-let phone = prompt("Введіть номер телефону:");
-alert(formattedPhone(phone)); 
+document.getElementById('1').addEventListener('click', getRow);
+document.getElementById('2').addEventListener('click', formattedPhone);
